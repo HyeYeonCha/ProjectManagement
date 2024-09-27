@@ -82,11 +82,12 @@ if not exists CREATE TABLE products (
 5. 상품 상세
 
 
-<details><summary>Datetime, TimeStamp 관련 </summary>
-    - TimeStamp 는 2038년까지밖에 저장이 안 됨.
+<details>
+	<summary>Datetime, TimeStamp 관련 </summary>
+	<li>TimeStamp 는 2038년까지밖에 저장이 안 됨.</li>
+	<li>근데 timestamp 는 UTC 라 시간계산이 용이</li>
+	<p>- 참고 : https://velog.io/@jejualrock/TIMESTAMP-DATETIME</p>
     
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ceff3714-444c-4820-a5a0-a21db1b2d45e/e1fb10d8-00e0-4e2a-8628-a62cfb01316c/image.png)
-    
-    - 근데 timestamp 는 UTC 라 시간계산이 용이
+    TIMESTAMP는 UNIX timestamp 를 사용한다. 그래서 "1970-01-01 00:00:01 UTC" 부터 "2038-01-19 03:14:07 UTC" 에서만 사용할 수 있다. 
+    DATETIME은 MySQL에 종속되어 있는 시간 타입을 사용한다. "9999-12-31 23:59:59"의 범위까지 사용할 수 있다.    
 </details>
