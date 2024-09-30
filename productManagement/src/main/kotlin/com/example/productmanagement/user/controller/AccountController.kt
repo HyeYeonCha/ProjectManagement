@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 class AccountController {
 
     // 회원 가입
-    @PostMapping("/sing-up")
+    @PostMapping("/sign-up")
     fun signup() {}
 
     // 로그인
