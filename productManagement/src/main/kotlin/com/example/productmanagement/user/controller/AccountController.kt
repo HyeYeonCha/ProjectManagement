@@ -1,7 +1,11 @@
 package com.example.productmanagement.user.controller
 
+import com.example.productmanagement.common.CommonResponse
 import com.example.productmanagement.user.domain.AccountDomainService
 import com.example.productmanagement.user.request.SignUpRequest
+import com.example.productmanagement.user.response.SignUpResponse
+import com.example.productmanagement.user.response.toResponse
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -10,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/user")
-class AccountController(
+class AccountController (
     private val accountDomainService: AccountDomainService,
 ) {
 
     // 회원 가입
     @PostMapping("/sign-up")
-    fun signup(signUpRequest: SignUpRequest): ResponseEntity<String> {
-        accountDomainService.signUp()
-        return ResponseEntity.ok().build()
+    fun signup(signUpRequest: SignUpRequest): CommonResponse {
+        val signupResponse: SignUpResponse = accountDomainService.signUp().toResponse()
+        val metaResponse = CommonResponse.StatusCodeMeta(HttpStatus.OK)
+
+        return CommonResponse(meta = metaResponse, data = signupResponse)
     }
 
     // 로그인
