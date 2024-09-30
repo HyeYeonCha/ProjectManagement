@@ -3,7 +3,7 @@ package com.example.productmanagement.user.response
 import com.example.productmanagement.user.domain.dto.SignUpDTO
 
 data class SignUpResponse(
-    val userId: Int,
+    val userId: Long,
     val refreshToken: String,
 )
 

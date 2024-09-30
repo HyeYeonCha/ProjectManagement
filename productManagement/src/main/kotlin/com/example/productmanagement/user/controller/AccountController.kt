@@ -21,8 +21,9 @@ class AccountController (
     // 회원 가입
     @PostMapping("/sign-up")
     fun signup(signUpRequest: SignUpRequest): CommonResponse {
-        val signupResponse: SignUpResponse = accountDomainService.signUp().toResponse()
-        val metaResponse = CommonResponse.StatusCodeMeta(HttpStatus.OK)
+        val signupResponse: SignUpResponse =
+            accountDomainService.signUp(mobile = signUpRequest.mobile, password = signUpRequest.password).toResponse()
+        val metaResponse = CommonResponse.StatusCodeMeta(HttpStatus.CREATED)
 
         return CommonResponse(meta = metaResponse, data = signupResponse)
     }
